@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.action-bar {
+  background-color: #2F855A;
+  color: white;
+}
+
+.btn-primary {
+  background-color: #2F855A;
+  color: white;
+  padding: 12 24;
+  border-radius: 8;
+  font-size: 16;
+  font-weight: bold;
+}
+
+.btn-secondary {
+  background-color: #4FD1C5;
+  color: white;
+  padding: 12 24;
+  border-radius: 8;
+  font-size: 16;
+  font-weight: bold;
+}

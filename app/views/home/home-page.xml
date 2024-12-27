@@ -1,0 +1,97 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo">
+    <ActionBar title="GlobalForests" class="action-bar">
+        <ActionItem tap="{{ onLogout }}" 
+                   ios.position="right" 
+                   android.position="actionBar">
+            <Label text="Logout" class="text-white" />
+        </ActionItem>
+    </ActionBar>
+
+    <TabView selectedTabTextColor="#2F855A">
+        <TabViewItem title="Dashboard">
+            <GridLayout>
+                <ScrollView>
+                    <StackLayout class="p-4">
+                        <Label text="Welcome to GlobalForests" class="text-2xl font-bold mb-4" />
+                        
+                        <!-- Quick Actions -->
+                        <GridLayout columns="*, *" rows="auto" class="mb-4">
+                            <Button text="Donate Now" 
+                                    tap="{{ onDonate }}" 
+                                    class="btn-primary m-1" 
+                                    col="0" />
+                            <Button text="View Projects" 
+                                    tap="{{ onViewProjects }}" 
+                                    class="btn-secondary m-1" 
+                                    col="1" />
+                        </GridLayout>
+
+                        <!-- Impact Stats -->
+                        <GridLayout columns="*, *" rows="auto, auto" class="bg-white p-4 rounded-lg mb-4">
+                            <Label text="Trees Planted" class="text-center text-gray-600" row="0" col="0" />
+                            <Label text="CO₂ Reduced" class="text-center text-gray-600" row="0" col="1" />
+                            <Label text="{{ treesPlanted }}" class="text-center text-2xl font-bold text-green-600" row="1" col="0" />
+                            <Label text="{{ co2Reduced }}" class="text-center text-2xl font-bold text-green-600" row="1" col="1" />
+                        </GridLayout>
+
+                        <!-- Recent Updates -->
+                        <Label text="Recent Updates" class="text-xl font-bold mb-2" />
+                        <ListView items="{{ updates }}" class="bg-white rounded-lg">
+                            <ListView.itemTemplate>
+                                <StackLayout class="p-2 border-b border-gray-200">
+                                    <Label text="{{ title }}" class="font-bold" />
+                                    <Label text="{{ description }}" textWrap="true" />
+                                </StackLayout>
+                            </ListView.itemTemplate>
+                        </ListView>
+                    </StackLayout>
+                </ScrollView>
+            </GridLayout>
+        </TabViewItem>
+
+        <TabViewItem title="Donate">
+            <GridLayout>
+                <ScrollView>
+                    <StackLayout class="p-4">
+                        <Label text="Make a Donation" class="text-2xl font-bold mb-4" />
+                        
+                        <TextField text="{{ donationAmount }}" 
+                                 hint="Enter amount" 
+                                 keyboardType="number" 
+                                 class="p-2 border-b border-gray-300 mb-4" />
+                        
+                        <Button text="Donate via PayPal" 
+                                tap="{{ onPayPalDonate }}" 
+                                class="btn-primary mb-2" />
+                        <Button text="Donate via Crypto" 
+                                tap="{{ onCryptoDonate }}" 
+                                class="btn-secondary" />
+                    </StackLayout>
+                </ScrollView>
+            </GridLayout>
+        </TabViewItem>
+
+        <TabViewItem title="Projects">
+            <GridLayout>
+                <ScrollView>
+                    <StackLayout class="p-4">
+                        <Label text="Our Projects" class="text-2xl font-bold mb-4" />
+                        <ListView items="{{ projects }}" class="bg-white rounded-lg">
+                            <ListView.itemTemplate>
+                                <StackLayout class="p-4 border-b border-gray-200">
+                                    <Image src="{{ image }}" class="h-40 rounded-lg mb-2" />
+                                    <Label text="{{ name }}" class="font-bold text-lg" />
+                                    <Label text="{{ description }}" textWrap="true" class="text-gray-600" />
+                                    <StackLayout orientation="horizontal" class="mt-2">
+                                        <Label text="{{ progress }}%" class="text-green-600 font-bold" />
+                                        <Progress value="{{ progress }}" maxValue="100" class="m-0" />
+                                    </StackLayout>
+                                </StackLayout>
+                            </ListView.itemTemplate>
+                        </ListView>
+                    </StackLayout>
+                </ScrollView>
+            </GridLayout>
+        </TabViewItem>
+    </TabView>
+</Page>
